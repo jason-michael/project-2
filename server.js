@@ -2,12 +2,12 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const routes = require('./controller/loginRoutes');
+const loginRoutes = require("./controller/loginRoutes");
 const expressValidator = require('express-validator');
 
 // Express setup
-const PORT = process.env.PORT || 3000;
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // View engine
 app.set('view engine', 'pug');
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(expressValidator());
 
 // Routes
-app.use(routes);
+app.use(loginRoutes);
 
 // Server start
 app.listen(PORT, () => {
