@@ -7,7 +7,6 @@ USE testdb;
 
 -- Bookmarks Table
 CREATE TABLE bookmarks (
-    id INT AUTO_INCREMENT NOT NULL,
     createdAt TIMESTAMP NOT NULL,
     bookmark_name VARCHAR(50) NULL,
     href VARCHAR(750) NOT NULL,
