@@ -28,5 +28,7 @@ form(method="POST" action="/register")
             label.label(for="passwordMatch") Re-enter Password
             input.input(type="password" name="passwordMatch" placeholder="Re-enter your password")
 
-    a.button(href='/') Back
-    button.button.is-primary(type="submit") Sign up
+    .field
+        .control
+            a.button(href='/') Back
+            button.button.is-primary(type="submit" style="margin-left:10px;") Sign up

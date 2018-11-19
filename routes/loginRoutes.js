@@ -1,22 +1,71 @@
+//============================
+// DEPENDENCIES
+//============================
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const db = require('../db');
+const db = require('../db/connection');
+const passport = require('passport');
 
 // Hashed password size
 const saltRounds = 10;
 
-// Root GET
-router.get('/', (req, res, next) => res.render('home', {
-    title: 'Home'
+//============================
+// ROUTES
+//============================
+
+/**
+ * Home
+ */
+router.get('/', (req, res, next) => {
+
+    // TODO: remove
+    console.log('Logged in ID:  ', req.user);
+    console.log('Authenticated: ', req.isAuthenticated());
+
+    res.render('home', {
+        title: 'Home'
+    });
+});
+
+/**
+ * Profile
+ */
+router.get('/profile', authenticationMiddleware(), (req, res) => {
+    res.render('profile', {
+        title: 'Profile'
+    });
+});
+
+/**
+ * Login GET
+ */
+router.get('/login', (req, res) => {
+    res.render('login', {
+        title: 'Login'
+    });
+});
+
+/**
+ * Login POST
+ */
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/profile',
+    failureRedirect: '/login'
 }));
 
-// Register GET
+/**
+ * Register GET
+ */
 router.get('/register', (req, res, next) => res.render('register', {
     title: 'Sign up'
 }));
 
-// Register POST
+/**
+ * Register POST
+ */
 router.post('/register', (req, res, next) => {
+
+    // TODO: refactor
 
     //============================
     // VALIDATORS
@@ -28,10 +77,11 @@ router.post('/register', (req, res, next) => {
     req.checkBody('password', 'Password must be between 8-100 characters long.').len(8, 100);
     req.checkBody('passwordMatch', 'Passwords do not match, please try again.').equals(req.body.password);
     //------------------------------------------------------------------
-    // Strict password charactor validation (disabled for development)
+    // Strict password character validation (disabled for development)
     //------------------------------------------------------------------
     // req.checkBody("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.")
     // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
+
 
 
     //============================
@@ -53,24 +103,55 @@ router.post('/register', (req, res, next) => {
             email: req.body.email
         };
 
-
-        // HASH PASSWORD
+        // Hash the new user's password before storing.
         bcrypt.hash(newUser.password, saltRounds, (err, hash) => {
             if (err) throw err;
 
             newUser.password = hash;
 
-            // REGISTER NEW USER
-            registerNewUser(newUser, () => {
-                console.log('--> Rendering new user home view.')
-                res.render('home', {
-                    title: 'Home'
+            //============================
+            // REGISTER
+            //============================
+            registerNewUser(newUser, (userId) => {
+                req.login(userId, err => {
+                    if (err) throw err;
+                    res.redirect('/profile');
                 });
             });
-
         });
     }
 });
+
+//============================
+// SESSION STORAGE
+//============================
+/**
+ * Store user id.
+ */
+passport.serializeUser(function (userId, done) {
+    done(null, userId);
+});
+
+/**
+ * Read from session.
+ */
+passport.deserializeUser(function (userId, done) {
+    done(null, userId);
+});
+
+//===============================
+// TEST FOR USER AUTHENTICATION
+//===============================
+function authenticationMiddleware() {
+    return (req, res, next) => {
+        console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
+
+        if (req.isAuthenticated()) return next();
+        res.redirect('/login')
+    }
+}
+
+// TODO: redo giant comment blocks below
 
 //=========================================================================
 // REGISTER NEW USER
@@ -84,7 +165,7 @@ router.post('/register', (req, res, next) => {
 async function registerNewUser(user, callback) {
     const newUserId = await addNewUser(user)
     await setNewUserConfig(newUserId);
-    callback();
+    callback(newUserId);
 }
 
 //============================================
@@ -100,51 +181,31 @@ async function addNewUser(user) {
         console.log('--> Adding new user: ', user.username);
 
         const query = 'INSERT INTO users (username, email, password) VALUES (?,?,?)';
-        db.query(query, [user.username, user.email, user.password], (err, results, fields) => {
+        db.query(query, [user.username, user.email, user.password], (err, results) => {
             if (err) reject(err);
+
             resolve(results.insertId);
         });
     });
 }
 
-//============================================
+//================================================
 // SET NEW USER CONFIG
-//--------------------------------------------
+//------------------------------------------------
 // Takes in an id (user id).
-//--------------------------------------------
-// Adds the new user to the users table.
+//------------------------------------------------
+// Adds the new user's id to the userconfig table.
 // Resolves (empty).
-//============================================
+//================================================
 async function setNewUserConfig(id) {
     return new Promise((resolve, reject) => {
         console.log('--> Setting user config for userId:', id);
 
-        const query = 'INSERT INTO userconfig (userId) VALUES (?)';
+        const query = 'INSERT INTO userconfig (user_id) VALUES (?)';
         db.query(query, [id], (err, results, fields) => {
             resolve();
         });
     });
 }
 
-//============================================
-// GET NEW USER CONFIG
-//--------------------------------------------
-// Takes in an id (user id).
-//--------------------------------------------
-// This works but needs to be executed on
-// registered user login.
-//============================================
-/*
-async function getNewUserConfig(id) {
-    return new Promise((resolve, reject) => {
-        console.log('--> Getting user config for userId:', id);
-
-        const query = 'SELECT * FROM userconfig WHERE userId = ?';
-        db.query(query, [id], (err, results, fields) => {
-            console.log(results)
-            resolve(results);
-        });
-    });
-}
-*/
 module.exports = router;
