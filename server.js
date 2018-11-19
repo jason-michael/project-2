@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const loginRoutes = require("./controller/loginRoutes");
+const apiRoutes = require("./controller/apiRoutes");
 const expressValidator = require('express-validator');
 
 // Express setup
@@ -21,6 +22,7 @@ app.use(expressValidator());
 
 // Routes
 app.use(loginRoutes);
+app.use(apiRoutes);
 
 // Server start
 app.listen(PORT, () => {
