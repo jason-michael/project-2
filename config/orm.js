@@ -2,16 +2,16 @@ const connection = require("./db_connection")
 
 
 const orm = {
-    selectAll: function(tableName, colName, val, callback) {
-        let query = "SELECT * FROM ?? WHERE ?? = ?";
-        connection.query(query, [tableName, colName, val], (err, result) => {
+    selectAll: function(user, callback) {
+        let query = "SELECT * FROM bookmarks WHERE user_name = ?";
+        connection.query(query, [user], (err, result) => {
             if (err) throw err
             callback(result)
         })
     },
-    selectWhereCat: function(username, category, callback) {
-        let query = "SELECT * FROM bookmarks WHERE username = ? AND category = ?";
-        connection.query(query, [username, category], (err, result) => {
+    selectCategory: function(user, category, callback) {
+        let query = "SELECT * FROM bookmarks WHERE user_name = ? AND category = ?";
+        connection.query(query, [user, category], (err, result) => {
             if (err) throw err
             callback(result)
         })

@@ -9,16 +9,19 @@ const orm = require('../config/orm')
 //==========================================================
 // Get Bookmarks
 //==========================================================
-router.get("/api/bookmarks/:category?", (req, res) => {
+router.get("/bookmarks/:user/:category?", (req, res) => {
     let category = req.params.category
+    let user = req.params.user
     if (!category) {
-        orm.selectAll("bookmarks", "username", "matt", (data) => {
-            console.log(data);
+        orm.selectAll(user, (data) => {
             res.json(data)    
         })
-        
+    } else {
+        orm.selectCategory(user, category, (data) => {
+            res.json(data)
+        }) 
     }
-    // res.json() all bookmarks in 'category'
+    
 })
 
 
