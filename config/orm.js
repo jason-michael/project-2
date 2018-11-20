@@ -15,6 +15,13 @@ const orm = {
             if (err) throw err
             callback(result)
         })
+    },
+    insertOne: function(name, href, notes, category, user, callback) {
+        let query = "INSERT INTO bookmarks (bookmark_name, href, notes, category, user_name) VALUES (?, ?, ?, ?, ?)"
+        connection.query(query, [name, href, notes, category, user], (err, result) => {
+            if (err) throw err
+            callback(result)
+        })
     }
 }
 
