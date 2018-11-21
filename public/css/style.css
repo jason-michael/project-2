@@ -1,0 +1,8 @@
+html, body {
+    min-height: 100vh;
+}
+
+body.container {
+    margin: 50px auto;
+    width: 25%;
+}

@@ -4,7 +4,7 @@
 const passport = require('passport');
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const db = require('../db/connection');
+const db = require('../config/db_connection');
 const hashSize = 10;
 
 //============================

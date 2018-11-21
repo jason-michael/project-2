@@ -1,6 +1,7 @@
 //============================
 // DEPENDENCIES
 //============================
+require("dotenv").config();
 const expressValidator = require('express-validator');
 const express = require('express');
 const path = require('path');

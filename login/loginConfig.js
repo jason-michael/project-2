@@ -2,7 +2,7 @@
 // DEPENDENCIES
 //============================
 require('dotenv').config();
-const db = require('../db/connection');
+const db = require('../config/db_connection');
 
 //============================
 // AUTHENTICATION PACKAGES
