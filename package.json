@@ -1,0 +1,25 @@
+{
+  "name": "express-pug-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jason-michael/express-pug-boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jason-michael/express-pug-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jason-michael/express-pug-boilerplate#readme",
+  "dependencies": {
+    "bulma": "^0.7.2",
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
+}
