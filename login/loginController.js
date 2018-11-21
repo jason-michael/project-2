@@ -1,13 +1,11 @@
 //============================
 // DEPENDENCIES
 //============================
+const passport = require('passport');
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const db = require('../db/connection');
-const passport = require('passport');
-
-// Hashed password size
-const saltRounds = 10;
+const hashSize = 10;
 
 //============================
 // ROUTES
@@ -16,7 +14,7 @@ const saltRounds = 10;
 /**
  * Home
  */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
 
     // TODO: remove
     console.log('Logged in ID:  ', req.user);
@@ -52,6 +50,14 @@ router.post('/login', passport.authenticate('local', {
     successRedirect: '/profile',
     failureRedirect: '/login'
 }));
+
+/**
+ * Logout GET
+ */
+router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
 /**
  * Register GET
@@ -104,7 +110,7 @@ router.post('/register', (req, res, next) => {
         };
 
         // Hash the new user's password before storing.
-        bcrypt.hash(newUser.password, saltRounds, (err, hash) => {
+        bcrypt.hash(newUser.password, hashSize, (err, hash) => {
             if (err) throw err;
 
             newUser.password = hash;
@@ -151,31 +157,15 @@ function authenticationMiddleware() {
     }
 }
 
-// TODO: redo giant comment blocks below
-
-//=========================================================================
-// REGISTER NEW USER
-//-------------------------------------------------------------------------
-// Takes in a user object and a callback function.
-//-------------------------------------------------------------------------
-// First adds the new user to the users table and get their user id,
-// then adds a new row in userconfig table with a key matching the user id,
-// then executes callback function.
-//=========================================================================
+//============================
+// REGISTER & ADD USER
+//============================
 async function registerNewUser(user, callback) {
     const newUserId = await addNewUser(user)
-    await setNewUserConfig(newUserId);
+    // await setNewUserConfig(newUserId);
     callback(newUserId);
 }
 
-//============================================
-// ADD NEW USER
-//--------------------------------------------
-// Takes in a user object.
-//--------------------------------------------
-// Adds the new user to the users table.
-// Resolves with the insertId (the user's id).
-//============================================
 async function addNewUser(user) {
     return new Promise((resolve, reject) => {
         console.log('--> Adding new user: ', user.username);
@@ -185,25 +175,6 @@ async function addNewUser(user) {
             if (err) reject(err);
 
             resolve(results.insertId);
-        });
-    });
-}
-
-//================================================
-// SET NEW USER CONFIG
-//------------------------------------------------
-// Takes in an id (user id).
-//------------------------------------------------
-// Adds the new user's id to the userconfig table.
-// Resolves (empty).
-//================================================
-async function setNewUserConfig(id) {
-    return new Promise((resolve, reject) => {
-        console.log('--> Setting user config for userId:', id);
-
-        const query = 'INSERT INTO userconfig (user_id) VALUES (?)';
-        db.query(query, [id], (err, results, fields) => {
-            resolve();
         });
     });
 }
