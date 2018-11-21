@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
 .env
-.todo
 plan.md
+/node_modules
+.todo

@@ -1,30 +1,41 @@
-// Dependencies
-require('dotenv').config();
+//============================
+// DEPENDENCIES
+//============================
+require("dotenv").config();
+const expressValidator = require('express-validator');
 const express = require('express');
 const path = require('path');
-const loginRoutes = require("./controller/loginRoutes");
-const apiRoutes = require("./controller/apiRoutes");
-const expressValidator = require('express-validator');
 
-// Express setup
-const app = express();
+//============================
+// EXPRESS INITIALIZATION
+//============================
 const PORT = process.env.PORT || 3000;
+const app = express();
+require('./login/loginConfig')(app);
+const loginRoutes = require('./login/loginController');
 
-// View engine
+//============================
+// VIEW ENGINE
+//============================
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
+//============================
+// STANDARD MIDDLEWARE
+//============================
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(expressValidator());
 
-// Routes
+//============================
+// ROUTES
+//============================
 app.use(loginRoutes);
-app.use(apiRoutes);
 
-// Server start
+//============================
+// SERVER START
+//============================
 app.listen(PORT, () => {
     console.log(`--> Server running on http://localhost:${PORT}/`);
 });
