@@ -15,15 +15,6 @@ CREATE TABLE users
     PRIMARY KEY (id)
 );
 
--- User config;
-CREATE TABLE userconfig
-(
-    user_id INT(11) NOT NULL,
-
-    FOREIGN KEY (user_id)
-        REFERENCES users(id)
-        ON DELETE CASCADE
-);
 
 -- Bookmarks Table
 CREATE TABLE bookmarks (

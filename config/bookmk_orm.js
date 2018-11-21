@@ -1,7 +1,7 @@
 const connection = require("./db_connection")
 
 
-const orm = {
+const bookmk_orm = {
     selectAll: function(user, callback) {
         let query = "SELECT * FROM bookmarks WHERE user_name = ?";
         connection.query(query, [user], (err, result) => {
@@ -26,4 +26,4 @@ const orm = {
 }
 
 
-module.exports = orm;
+module.exports = bookmk_orm;
