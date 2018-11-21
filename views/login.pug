@@ -1,0 +1,17 @@
+include includes/header.pug
+.container(style="width:400px;margin-top:100px;")
+    h1.title Sign In
+
+    form(method="POST" action="/login")
+        .field
+            .control
+                label.label(for="username") Username
+                input.input(type="text" name="username" placeholder="Enter a username")
+        .field
+            .control
+                label.label(for="password") Password
+                input.input(type="password" name="password" placeholder="Enter a password")
+        .field
+            .control
+                a.button(href='/') Back
+                button.button.is-primary(type="submit" style="margin-left:10px;") Sign in
