@@ -1,5 +1,19 @@
 html, body {
-    min-height: 100vh;
+
+
+    background-size: 100%;
+    background-repeat: no-repeat;
+    font-family: 'Comfortaa', cursive;
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100vw
+
+}
+
+.formContainer{
+    max-width: 25%;
+    text-align: center
 }
 
 body.container {
@@ -19,4 +33,34 @@ h3 {
     height: 200px;
     width: 300px;
     background: #f4f4f4;
+::-webkit-scrollbar {
+    display: none;
+}
+
+.logoHeading{
+    text-align: center
+}
+
+#logo{
+    width: 500px;
+    margin-left: 155px;
+}
+
+#logoAbout{
+   transform: scale(2.5);
+
+}
+
+
+
+.footer{
+
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:30px;
+        min-height: 40hv;
+        background-color: transparent
+
+
 }
