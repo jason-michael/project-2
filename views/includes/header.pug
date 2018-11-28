@@ -12,6 +12,10 @@ html(lang="en")
     //- Local CSS
     link(rel="stylesheet", href="/css/style.css")
 
+    //- Local JS
+    script(src="/js/scripts.js", type="text/javascript")
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+
     body
         nav.navbar(role="navigation" aria-label="main navigation")
             .navbar-brand
@@ -44,5 +48,6 @@ html(lang="en")
                         a.button.is-primary
                             strong Sign up
                         a.button.is-light Log in
+                        a.button.is-primary(href="/logout") Logout
 
         .container

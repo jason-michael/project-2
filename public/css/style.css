@@ -6,3 +6,17 @@ body.container {
     margin: 50px auto;
     width: 25%;
 }
+
+h1 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+.box {
+    height: 200px;
+    width: 300px;
+    background: #f4f4f4;
+}
