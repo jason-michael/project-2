@@ -33,9 +33,12 @@ app.use(expressValidator());
 //============================
 app.use(loginRoutes);
 
+// Redirect to root on bad route.
+app.get('*', (req,res) => res.redirect('/'));
+
 //============================
 // SERVER START
 //============================
 app.listen(PORT, () => {
-    console.log(`--> Server running on http://localhost:${PORT}/`);
+    console.log(`--> Server running on port ${PORT}/`);
 });
