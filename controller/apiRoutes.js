@@ -15,12 +15,12 @@ router.get("/bookmarks/:user/:category?", (req, res) => {
     let category = req.params.category
     if (!category) {
         bookmk_orm.selectAll(user, (data) => {
-            res.json(data)    
+            res.json(data)
         })
     } else {
         bookmk_orm.selectCategory(user, category, (data) => {
             res.json(data)
-        }) 
+        })
     }
 })
 
@@ -29,8 +29,16 @@ router.post("/bookmarks", (req, res) => {
     bookmk_orm.insertOne(newBkmk.name, newBkmk.href, newBkmk.notes, newBkmk.category, newBkmk.user, (data) => {
         res.json(newBkmk)
     })
-    
-    
+
+
 })
 
-module.exports = router;
+// ! TEST
+function getAllBookmarks(userId) {
+    console.log('Running getAllBookmarks for user id: ', userId);
+    bookmk_orm.selectAll(user_name, data => {
+        console.log('getAllBookmarks data: ', data);
+    })
+}
+
+module.exports = { router, getAllBookmarks };
