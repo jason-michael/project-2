@@ -15,27 +15,29 @@ br
                 .modal#collectionModal
                     .modal-background
                     .modal-content
-                        h3 Create a New Collection
-                        form(method="POST" action="")
-                            .field
-                                .control
-                                    label.label(for="addCollectionName") Collection Name
-                                    input.input(type="text" name="addCollectionName" placeholder="")
-                            .field
-                                .control
-                                    button.button.is-primary(type="submit" id="addCollectionBtn") Submit
-                    button.modal-close.is-large(aria-label="close")
+                        .box
+                            h3 Create a New Collection
+                            hr
+                            form(method="POST" action="")
+                                .field
+                                    .control
+                                        label.label(for="addCollectionName") Collection Name
+                                        input.input(type="text" name="addCollectionName" placeholder="")
+                                .field
+                                    .control
+                                        button.button.is-primary(type="submit" id="addCollectionBtn") Submit
+                        button.modal-close.is-large#closeBox(aria-label="close")
 
                 ul.menu-list#allCollections
                     li
                         a.collectionTitle Example Collection
-                            ul.menu-list.collectionSubtitle
-                                li 
-                                    a(href="#") Documentation
-                                li 
-                                    a(href="#") Tutorials
-                                li 
-                                    a(href="#") Other
+                        ul.menu-list.collectionSubtitle
+                            li 
+                                a(href="#") Documentation
+                            li 
+                                a(href="#") Tutorials
+                            li 
+                                a(href="#") Other
                 
 
         .column.is-three-quarters
@@ -44,12 +46,48 @@ br
                     .level-left
                         h1.collectionTitle.level-item Example Collection
                     .level-right
-                        button.button.is-block.is-primary.level-item(href="") +
+                        button.button.is-block.is-primary.level-item#addBookmarkBtn +
+
+                .modal#bookmarkModal
+                    .modal-background
+                    .modal-content
+                        .box
+                            h3 Create a New Bookmark
+                            hr
+                            form(method="POST" action="")
+                                .field
+                                    .control
+                                        label.label(for="addBookmarkName") Bookmark Name
+                                        input.input(type="text" name="addBookmarkName" placeholder="")
+                                .field
+                                    .control
+                                        label.label(for="addBookmarkLink") Link
+                                        input.input(type="text" name="addBookmarkLink" placeholder="")
+                                .field
+                                    .control
+                                        lable.label(for="categoryDrop") Category
+                                        .select
+                                            select(name="categoryDrop")
+                                                option Documentation
+                                                option Tutorials
+                                                option Other
+                                .field
+                                    .control
+                                        label.label(for="addNotes") Notes
+                                        textarea.textarea(type="textarea" name="addNotes" placeholder="")
+                                .field
+                                    .control
+                                        button.button.is-primary(type="submit" id="addBookmarkBtn") Submit
+                        button.modal-close.is-large#bookmarkClose(aria-label="close")
 
                 h3.collectionSubtitle Documentation
                 hr
-                .box.is-one-quarter
-                    h3.bookmarkTitle Example
+                .box#bookmarkBox
+                    .level
+                        .level-left
+                            h3.bookmarkTitle.level-item Example
+                        .level-right
+                            button.button.is-primary.level-item x
                     .p.bookmarkNotes Pulled from database information. Notes Notes Notes
                     a(href="#") Go to Site
 

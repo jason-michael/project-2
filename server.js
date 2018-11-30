@@ -9,7 +9,7 @@ const path = require('path');
 //============================
 // EXPRESS INITIALIZATION
 //============================
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 const app = express();
 require('./login/loginConfig')(app);
 const loginRoutes = require('./login/loginController');

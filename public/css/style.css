@@ -29,10 +29,16 @@ h3 {
     font-size: 1.5em;
 }
 
-.box {
+hr {
+    margin-top: 10px;
+}
+
+#bookmarkBox {
     height: 200px;
     width: 300px;
     background: #f4f4f4;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -51,7 +57,9 @@ h3 {
 
 }
 
-
+.menu-label {
+    font-size: 1em;
+}
 
 .footer{
 
