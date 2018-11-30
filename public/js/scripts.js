@@ -1,3 +1,7 @@
+$("#showModal").click((function(){
+    $(".modal").addClass("is-active");
+}));
+
 
     function toggleCollectionModal () {
         console.log("You clicked!");
@@ -36,7 +40,3 @@ $(document).ready(function(){
     });
 
 });
-
-
-
-

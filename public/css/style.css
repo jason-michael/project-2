@@ -11,6 +11,8 @@ html, body {
 
 }
 
+
+
 .formContainer{
     max-width: 25%;
     text-align: center
@@ -52,8 +54,9 @@ hr {
     margin-left: 155px;
 }
 
-#logoAbout{
-   transform: scale(2.5);
+#navLogo{
+   transform: scale(2);
+   transform-origin: left;
 
 }
 
@@ -71,4 +74,10 @@ hr {
         background-color: transparent
 
 
+}
+
+/* Register */
+.register {
+    max-width: 400px;
+    padding: 0 14px;
 }
