@@ -22,11 +22,11 @@ CREATE TABLE bookmarks (
     bookmark_name VARCHAR(50) NULL,
     href VARCHAR(750) NOT NULL,
     notes VARCHAR(2000) NULL,
-    category VARCHAR(100) NULL,
+    collection_name VARCHAR(500) NOT NULL,
+    category VARCHAR(100) NOT NULL,
     
     user_id INT(11) NOT NULL,
-    FOREIGN KEY (user_id) 
-    REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 

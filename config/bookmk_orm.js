@@ -9,16 +9,23 @@ const bookmk_orm = {
             callback(result)
         })
     },
-    selectCategory: function(user, category, callback) {
-        let query = "SELECT * FROM bookmarks WHERE user_name = ? AND category = ?";
-        connection.query(query, [user, category], (err, result) => {
+    selectCollection: function(user, collection, callback) {
+        let query = "SELECT * FROM bookmarks WHERE user_id = ? AND collection = ?";
+        connection.query(query, [user, collection], (err, result) => {
+            if (err) throw err;
+            callback(result)
+        })
+    },
+    selectCategory: function(user, collection, category, callback) {
+        let query = "SELECT * FROM bookmarks WHERE user_id = ? AND collection_name = ? AND category = ?";
+        connection.query(query, [user, collection, category], (err, result) => {
             if (err) throw err
             callback(result)
         })
     },
-    insertOne: function(name, href, notes, category, user, callback) {
-        let query = "INSERT INTO bookmarks (bookmark_name, href, notes, category, user_name) VALUES (?, ?, ?, ?, ?)"
-        connection.query(query, [name, href, notes, category, user], (err, result) => {
+    insertOne: function(name, href, notes, collection, category, user, callback) {
+        let query = "INSERT INTO bookmarks (bookmark_name, href, notes, collection_name, category, user_id) VALUES (?, ?, ?, ?, ?, ?)"
+        connection.query(query, [name, href, notes, collection, category, user], (err, result) => {
             if (err) throw err
             callback(result)
         })
