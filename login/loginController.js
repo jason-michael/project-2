@@ -7,6 +7,9 @@ const bcrypt = require('bcryptjs');
 const db = require('../config/db_connection');
 const hashSize = 10;
 
+// ! TEST
+const apiRoutes = require('../controller/apiRoutes');
+
 //============================
 // ROUTES
 //============================
@@ -15,11 +18,6 @@ const hashSize = 10;
  * Home
  */
 router.get('/', (req, res) => {
-
-    // TODO: remove
-    console.log('Logged in ID:  ', req.user);
-    console.log('Authenticated: ', req.isAuthenticated());
-
     res.render('home', {
         title: 'Home'
     });
@@ -29,9 +27,23 @@ router.get('/', (req, res) => {
  * Profile
  */
 router.get('/profile', authenticationMiddleware(), (req, res) => {
-    res.render('profile', {
-        title: 'Profile'
+
+    // ! TEST
+    const query = 'SELECT * from users WHERE id = ?';
+    db.query(query, [req.user.user_id], async (err, results) => {
+        const userBookmarks = await apiRoutes.getAllBookmarks(results[0].id);
+        res.render('profile', {
+            title: 'Profile',
+            bookmarks: userBookmarks
+        });
     });
+
+    //--------------------------------------
+
+    // ORIGINAL
+    // res.render('profile', {
+    //     title: 'Profile'
+    // });
 });
 
 /**
@@ -150,7 +162,7 @@ passport.deserializeUser(function (userId, done) {
 //===============================
 function authenticationMiddleware() {
     return (req, res, next) => {
-        console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
+        // console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
 
         if (req.isAuthenticated()) return next();
         res.redirect('/login')
@@ -173,7 +185,6 @@ async function addNewUser(user) {
         const query = 'INSERT INTO users (username, email, password) VALUES (?,?,?)';
         db.query(query, [user.username, user.email, user.password], (err, results) => {
             if (err) reject(err);
-
             resolve(results.insertId);
         });
     });
