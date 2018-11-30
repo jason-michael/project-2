@@ -36,7 +36,8 @@ h3 {
     width: 300px;
     background: #f4f4f4;
 }
-    ::-webkit-scrollbar {
+
+::-webkit-scrollbar {
     display: none;
 }
 
@@ -67,4 +68,10 @@ h3 {
         background-color: transparent
 
 
+}
+
+/* Register */
+.register {
+    max-width: 400px;
+    padding: 0 14px;
 }

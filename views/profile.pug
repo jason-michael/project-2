@@ -8,7 +8,7 @@ br
             aside.menu
                 .level
                     .level-left
-                        p.menu-label.level-item Collections 
+                        p.menu-label.level-item Collections
                     .level-right
                         button.button.is-block.is-primary.level-item#addNewCollection +
                 hr
@@ -31,13 +31,13 @@ br
                     li
                         a.collectionTitle Example Collection
                             ul.menu-list.collectionSubtitle
-                                li 
+                                li
                                     a(href="#") Documentation
-                                li 
+                                li
                                     a(href="#") Tutorials
-                                li 
+                                li
                                     a(href="#") Other
-                
+
 
         .column.is-three-quarters
             #bookmarkDisplay
@@ -53,5 +53,7 @@ br
                     h3.bookmarkTitle Example
                     .p.bookmarkNotes Pulled from database information. Notes Notes Notes
                     a(href="#") Go to Site
+                for bookmark in bookmarks
+                    include includes/bookmark.pug
 
 
