@@ -1,5 +1,6 @@
 include includes/header.pug
-
+br
+br
 h1.title.has-text-centered Sign up
 
 if errors
@@ -10,25 +11,28 @@ if errors
         br
         p Please try again.
 br
-form(method="POST" action="/register")
-    .field
-        .control
-            label.label(for="username") Username
-            input.input(type="text" name="username" placeholder="Enter a username")
-    .field
-        .control
-            label.label(for="email") Email
-            input.input(type="email" name="email" placeholder="Enter your email")
-    .field
-        .control
-            label.label(for="password") Password
-            input.input(type="password" name="password" placeholder="Enter a password")
-    .field
-        .control
-            label.label(for="passwordMatch") Re-enter Password
-            input.input(type="password" name="passwordMatch" placeholder="Re-enter your password")
+.container.register
+    form(method="POST" action="/register")
+        .field
+            .control
+                label.label(for="username") Username *
+                input.input(type="text" name="username" placeholder="Enter a username")
+        .field
+            .control
+                label.label(for="email") Email *
+                input.input(type="email" name="email" placeholder="Enter your email")
+        .field
+            .control
+                label.label(for="password") Password *
+                input.input(type="password" name="password" placeholder="Enter a password")
+        .field
+            .control
+                label.label(for="passwordMatch") Confirm Password *
+                input.input(type="password" name="passwordMatch" placeholder="Confirm password")
+                small.has-text-right(style="width:100%") * Required
 
-    .field
-        .control
-            a.button(href='/') Back
-            button.button.is-primary(type="submit" style="margin-left:10px;") Sign up
+        .field
+            .control
+                br
+                a.button(href='/') Back
+                button.button.is-primary(type="submit" style="margin-left:10px;") Sign up
