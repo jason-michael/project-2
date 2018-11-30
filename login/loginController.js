@@ -18,11 +18,6 @@ const apiRoutes = require('../controller/apiRoutes');
  * Home
  */
 router.get('/', (req, res) => {
-
-    // TODO: remove
-    console.log('Logged in ID:  ', req.user);
-    console.log('Authenticated: ', req.isAuthenticated());
-
     res.render('home', {
         title: 'Home'
     });
@@ -31,19 +26,15 @@ router.get('/', (req, res) => {
 /**
  * Profile
  */
-router.get('/profile', authenticationMiddleware(), async (req, res) => {
+router.get('/profile', authenticationMiddleware(), (req, res) => {
 
     // ! TEST
     const query = 'SELECT * from users WHERE id = ?';
-    db.query(query, [req.user.user_id], (err, results) => {
-        console.log('id from db: ', results[0].id);
-        console.log('username from db: ', results[0].username);
-        console.log('email from db: ', results[0].email);
-
-        apiRoutes.getAllBookmarks(results[0].id);
-
+    db.query(query, [req.user.user_id], async (err, results) => {
+        const userBookmarks = await apiRoutes.getAllBookmarks(results[0].id);
         res.render('profile', {
-            title: 'Profile'
+            title: 'Profile',
+            bookmarks: userBookmarks
         });
     });
 

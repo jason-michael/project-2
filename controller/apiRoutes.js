@@ -33,12 +33,18 @@ router.post("/bookmarks", (req, res) => {
 
 })
 
-// ! TEST
-function getAllBookmarks(userId) {
-    console.log('Running getAllBookmarks for user id: ', userId);
-    bookmk_orm.selectAll(user_name, data => {
-        console.log('getAllBookmarks data: ', data);
-    })
+async function getAllBookmarks(userId) {
+    console.log('\nRunning getAllBookmarks for user id: ', userId);
+    return new Promise((resolve, reject) => {
+        bookmk_orm.selectAll(userId, data => {
+            console.log('getAllBookmarks data: ', data);
+
+            resolve(data);
+        });
+    });
 }
 
-module.exports = { router, getAllBookmarks };
+module.exports = {
+    router,
+    getAllBookmarks
+};
