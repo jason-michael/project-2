@@ -45,6 +45,14 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
     //     title: 'Profile'
     // });
 });
+ /**
+  * About GET
+  */
+router.get('/about', authenticationMiddleware(), (req, res) => {
+    res.render('about', {
+        title: 'About'
+    });
+});
 
 /**
  * Login GET
