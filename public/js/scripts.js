@@ -38,7 +38,7 @@ $(document).ready(function(){
         toggleBookmarkModal();
     });
 
-    $("addBookmarkBtn").on("submit", function(event) {
+    $("#addBookmarkBtn").on("click", function(event) {
         
         event.preventDefault();
     
@@ -58,7 +58,6 @@ $(document).ready(function(){
           function() {
             console.log("YAY! created new bookmark");
             
-            location.reload();
           }
         );
       });
