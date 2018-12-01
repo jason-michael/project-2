@@ -8,7 +8,7 @@ const db = require('../config/db_connection');
 const hashSize = 10;
 
 // ! TEST
-const apiRoutes = require('../controller/apiRoutes');
+const apiRoutes = require('./bookmarkController');
 
 //============================
 // ROUTES
@@ -44,6 +44,14 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
     // res.render('profile', {
     //     title: 'Profile'
     // });
+});
+ /**
+  * About GET
+  */
+router.get('/about', authenticationMiddleware(), (req, res) => {
+    res.render('about', {
+        title: 'About'
+    });
 });
 
 /**

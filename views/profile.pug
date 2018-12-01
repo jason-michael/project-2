@@ -1,6 +1,6 @@
 include includes/header.pug
 
-h1.title.block.has-text-centered Profile page
+h1#styleTitle.title.is-1.block.has-text-centered My Dashboard
 br
 .container(style="width:90%;margin-top:20px;")
     .columns.is-8
@@ -10,11 +10,13 @@ br
                     .level-left
                         p.menu-label.level-item Collections
                     .level-right
-                        button.button.is-block.is-primary.level-item#addNewCollection +
+                        button.button.is-block.is-black.level-item#addNewCollection +
                 hr
+
                 .modal#collectionModal
                     .modal-background
                     .modal-content
+<<<<<<< HEAD
                         h3 Create a New Collection
                         form(method="POST" action="")
                             .field
@@ -23,33 +25,84 @@ br
                                     input.input(type="text" name="addCollectionName" placeholder="")
                             .field
                                 .control
-                                    button.button.is-primary(type="submit" id="addCollectionBtn") Submit
+                                    button.button.is-black(type="submit" id="addCollectionBtn") Submit
                     button.modal-close.is-large(aria-label="close")
+=======
+                        .box
+                            h3 Create a New Collection
+                            hr
+                            form(method="POST" action="")
+                                .field
+                                    .control
+                                        label.label(for="addCollectionName") Collection Name
+                                        input.input(type="text" name="addCollectionName" placeholder="")
+                                .field
+                                    .control
+                                        button.button.is-primary(type="submit" id="addCollectionBtn") Submit
+                        button.modal-close.is-large#closeBox(aria-label="close")
+>>>>>>> 109869bf0c470f691e36e62b026ec1a2727fe72b
 
                 ul.menu-list#allCollections
                     li
                         a.collectionTitle Example Collection
-                            ul.menu-list.collectionSubtitle
-                                li
-                                    a(href="#") Documentation
-                                li
-                                    a(href="#") Tutorials
-                                li
-                                    a(href="#") Other
 
-
+                        ul.menu-list.collectionSubtitle
+                            li 
+                                a(href="#") Documentation
+                            li 
+                                a(href="#") Tutorials
+                            li 
+                                a(href="#") Other
+                
+                
         .column.is-three-quarters
             #bookmarkDisplay
                 .level
                     .level-left
                         h1.collectionTitle.level-item Example Collection
                     .level-right
-                        button.button.is-block.is-primary.level-item(href="") +
+                        button.button.is-block.is-primary.level-item#addBookmarkBtn +
+
+                .modal#bookmarkModal
+                    .modal-background
+                    .modal-content
+                        .box
+                            h3 Create a New Bookmark
+                            hr
+                            form(method="POST" action="")
+                                .field
+                                    .control
+                                        label.label(for="addBookmarkName") Bookmark Name
+                                        input.input(type="text" name="addBookmarkName" placeholder="")
+                                .field
+                                    .control
+                                        label.label(for="addBookmarkLink") Link
+                                        input.input(type="text" name="addBookmarkLink" placeholder="")
+                                .field
+                                    .control
+                                        lable.label(for="categoryDrop") Category
+                                        .select
+                                            select(name="categoryDrop")
+                                                option Documentation
+                                                option Tutorials
+                                                option Other
+                                .field
+                                    .control
+                                        label.label(for="addNotes") Notes
+                                        textarea.textarea(type="textarea" name="addNotes" placeholder="")
+                                .field
+                                    .control
+                                        button.button.is-primary(type="submit" id="addBookmarkBtn") Submit
+                        button.modal-close.is-large#bookmarkClose(aria-label="close")
 
                 h3.collectionSubtitle Documentation
                 hr
-                .box.is-one-quarter
-                    h3.bookmarkTitle Example
+                .box#bookmarkBox
+                    .level
+                        .level-left
+                            h3.bookmarkTitle.level-item Example
+                        .level-right
+                            button.button.is-primary.level-item x
                     .p.bookmarkNotes Pulled from database information. Notes Notes Notes
                     a(href="#") Go to Site
                 for bookmark in bookmarks

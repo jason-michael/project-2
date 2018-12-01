@@ -14,15 +14,18 @@ html(lang="en")
     ink(rel="stylesheet", href="/css/reset.css")
     link(rel="stylesheet", href="/css/style.css")
 
+    //- JQuery JS
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+
     //- Local JS
     script(src="/js/scripts.js", type="text/javascript")
-    script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+    
 
     body
         nav.navbar(role="navigation" aria-label="main navigation")
             .navbar-brand
-                a.navbar-item(href="https://bulma.io")
-                    img(src="https://bulma.io/images/bulma-logo.png" width="112" height="28")
+                a.navbar-item(href="/profile")
+                    img#navLogo(src="/images/logo.svg")
 
                 a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample")
                 span(aria-hidden="true")
@@ -31,26 +34,16 @@ html(lang="en")
 
             #navbarBasicExample.navbar-menu
                 .navbar-start
-                    a.navbar-item Home
-                    a.navbar-item Documentation
-
-                    .navbar-item.has-dropdown.is-hoverable
-                        a.navbar-link More
-
-                        .navbar-dropdown
-                            a.navbar-item About
-                            a.navbar-item Jobs
-                            a.navbar-item Contact
-                            hr.navbar-divider
-                            a.navbar-item Report an issue
+                    a.button(class="btn-hover color-1" href="/profile") My Dashboard
+                    a.button(class="btn-hover color-1" href="/about") About
+                    
+            
 
                 .navbar-end
                     .navbar-item
                         .buttons
-                        a.button.is-primary
-                            strong Sign up
-                        a.button.is-light Log in
-                        a.button.is-primary(href="/logout") Logout
+                        a.button(class="btn-hover color-1" href="/login") Log In
+                        a.button(class="btn-hover color-1" href="./logout") Log Out
 
         .container
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
