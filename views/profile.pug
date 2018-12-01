@@ -1,6 +1,6 @@
 include includes/header.pug
 
-h1.title.block.has-text-centered Profile page
+h1#styleTitle.title.is-1.block.has-text-centered My Dashboard
 br
 .container(style="width:90%;margin-top:20px;")
     .columns.is-8
@@ -10,12 +10,24 @@ br
                     .level-left
                         p.menu-label.level-item Collections
                     .level-right
-                        button.button.is-block.is-primary.level-item#addNewCollection +
+                        button.button.is-block.is-black.level-item#addNewCollection +
                 hr
 
                 .modal#collectionModal
                     .modal-background
                     .modal-content
+<<<<<<< HEAD
+                        h3 Create a New Collection
+                        form(method="POST" action="")
+                            .field
+                                .control
+                                    label.label(for="addCollectionName") Collection Name
+                                    input.input(type="text" name="addCollectionName" placeholder="")
+                            .field
+                                .control
+                                    button.button.is-black(type="submit" id="addCollectionBtn") Submit
+                    button.modal-close.is-large(aria-label="close")
+=======
                         .box
                             h3 Create a New Collection
                             hr
@@ -28,6 +40,7 @@ br
                                     .control
                                         button.button.is-primary(type="submit" id="addCollectionBtn") Submit
                         button.modal-close.is-large#closeBox(aria-label="close")
+>>>>>>> 109869bf0c470f691e36e62b026ec1a2727fe72b
 
                 ul.menu-list#allCollections
                     li
