@@ -28,22 +28,10 @@ router.get('/', (req, res) => {
  */
 router.get('/profile', authenticationMiddleware(), (req, res) => {
 
-    // ! TEST
-    const query = 'SELECT * from users WHERE id = ?';
-    db.query(query, [req.user.user_id], async (err, results) => {
-        const userBookmarks = await apiRoutes.getAllBookmarks(results[0].id);
-        res.render('profile', {
-            title: 'Profile',
-            bookmarks: userBookmarks
-        });
-    });
-
-    //--------------------------------------
-
     // ORIGINAL
-    // res.render('profile', {
-    //     title: 'Profile'
-    // });
+    res.render('profile', {
+        title: 'Profile'
+    });
 });
  /**
   * About GET
