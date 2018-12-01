@@ -11,8 +11,9 @@ const path = require('path');
 //============================
 const PORT = process.env.PORT || 3002;
 const app = express();
-require('./login/loginConfig')(app);
-const loginRoutes = require('./login/loginController');
+require('./config/loginConfig')(app);
+const loginRoutes = require('./controller/loginController');
+const apiRoutes = require('./controller/apiRoutes');
 
 //============================
 // VIEW ENGINE
@@ -32,6 +33,7 @@ app.use(expressValidator());
 // ROUTES
 //============================
 app.use(loginRoutes);
+app.use(apiRoutes);
 
 // Redirect to root on bad route.
 app.get('*', (req,res) => res.redirect('/'));

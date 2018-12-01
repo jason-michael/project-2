@@ -34,14 +34,21 @@ br
                         a.collectionTitle Example Collection
 
                         ul.menu-list.collectionSubtitle
-                            li 
+                            li
                                 a(href="#") Documentation
-                            li 
+                            li
                                 a(href="#") Tutorials
-                            li 
+                            li
                                 a(href="#") Other
-                
-                
+                    each value, index in collections
+                        li
+                            a.collectionTitle= index
+                            ul.menu-list.collectionSubtitle
+                                a(href= `/bookmarks/${user}/${index}/Documentation`) Documentation
+                                a(href= `/bookmarks/${user}/${index}/Tutorials`) Tutorials
+                                a(href= `/bookmarks/${user}/${index}/Other`) Other
+
+
         .column.is-three-quarters
             #bookmarkDisplay
                 .level

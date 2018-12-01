@@ -6,9 +6,10 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const db = require('../config/db_connection');
 const hashSize = 10;
+const apiRoutes = require('./apiRoutes');
+const Bookmark = require('../model/bookmark');
 
-// ! TEST
-const apiRoutes = require('../controller/apiRoutes');
+const collection = require('./collection');
 
 //============================
 // ROUTES
@@ -27,27 +28,30 @@ router.get('/', (req, res) => {
  * Profile
  */
 router.get('/profile', authenticationMiddleware(), (req, res) => {
+    Bookmark.getAll(req.user.user_id, data => {
 
-    // ! TEST
-    const query = 'SELECT * from users WHERE id = ?';
-    db.query(query, [req.user.user_id], async (err, results) => {
-        const userBookmarks = await apiRoutes.getAllBookmarks(results[0].id);
+        // Sort bookmarks
+        let collections = {};
+        data.forEach(bookmark => {
+            if (!collections[bookmark.collection_name]) {
+                collections[bookmark.collection_name] = [];
+            }
+
+            collections[bookmark.collection_name].push(bookmark);
+        });
+
+        // Render
         res.render('profile', {
-            title: 'Profile',
-            bookmarks: userBookmarks
+            collections,
+            bookmarks: data,
+            user: req.user.user_id
         });
     });
-
-    //--------------------------------------
-
-    // ORIGINAL
-    // res.render('profile', {
-    //     title: 'Profile'
-    // });
 });
- /**
-  * About GET
-  */
+
+/**
+ * About GET
+ */
 router.get('/about', authenticationMiddleware(), (req, res) => {
     res.render('about', {
         title: 'About'

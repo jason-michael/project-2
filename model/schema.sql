@@ -24,21 +24,15 @@ CREATE TABLE bookmarks (
     href VARCHAR(750) NOT NULL,
     notes VARCHAR(2000) NULL,
     collection_name VARCHAR(500) NOT NULL,
-    category VARCHAR(100) NOT NULL,
+    category VARCHAR(100) NULL,
     PRIMARY KEY (bkmk_id),
     user_id INT(11) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 
--- INSERT INTO bookmarks (bookmark_name, href, notes, collection_name category, user_id)
--- VALUES ("Semantic HTML", "w3schools.com", "HTML5 semantic tags ref.", "HTML", "Documentation" 1);
+INSERT INTO bookmarks (bookmark_name, href, notes, collection_name, category, user_id)
+VALUES ("Semantic HTML", "w3schools.com", "HTML5 semantic tags ref.", "HTML", "Documentation", 1);
 
--- INSERT INTO bookmarks (bookmark_name, href, notes, category, user_id)
--- VALUES ("JS Closures", "hackernoon.com", "Understand JS closures", "JS", 1);
-
--- INSERT INTO bookmarks (bookmark_name, href, notes, category, user_id)
--- VALUES ("CSS Grid", "css-tricks.com", "Learn CSS Grid", "CSS", "bob");
-
--- INSERT INTO bookmarks (bookmark_name, href, notes, category, user_id)
--- VALUES ("Travis CI", "travisci.com", "Travis Continuous Integration Tool", "DevOps", "bob");
+INSERT INTO bookmarks (bookmark_name, href, notes, collection_name, category, user_id)
+VALUES ("Pug/Jade HTML", "w3schools.com", "HTML template", "HTML", "Documentation", 1);
