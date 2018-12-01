@@ -1,10 +1,6 @@
 $("#showModal").click((function(){
     $(".modal").addClass("is-active");
 }));
-<<<<<<< HEAD
-=======
-
->>>>>>> f40f863229a2d8d47d305280535b74c294f90ba5
 
     function toggleCollectionModal () {
         console.log("You clicked!");
@@ -41,7 +37,7 @@ $(document).ready(function(){
         toggleBookmarkModal();
     });
 
-    $("addBookmarkBtn").on("submit", function(event) {
+    $("#addBookmarkBtn").on("click", function(event) {
         
         event.preventDefault();
     
@@ -61,7 +57,6 @@ $(document).ready(function(){
           function() {
             console.log("YAY! created new bookmark");
             
-            location.reload();
           }
         );
       });
