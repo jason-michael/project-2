@@ -15,9 +15,9 @@ router.get("/users/:id/bookmarks", (req, res) => {
 // CREATE New Bookmark
 //==========================================================
 router.post("/bookmarks/:bkmk_id", (req, res) => {
-    let newBkmk = req.body;
+    let obj = req.body;
     let id = req.params.bkmk_id;
-    Bookmarks.create(newBkmk, id, data => {
+    Bookmarks.create(obj, id, data => {
         res.json(data)
     })
 })
