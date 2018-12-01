@@ -1,5 +1,10 @@
-.box.is-one-quarter
-    h3.bookmarkTitle= bookmark.bookmark_name
-    p.bookmarkCategory= bookmark.category
-    p.bookmarkNotes= bookmark.notes
-    a(href=bookmark.href) Go to Site
+.column.is-one-third
+    .box.bookmarkBox
+        .level
+            .level-left
+                h5.bookmarkTitle= bookmark.bookmark_name
+            .level-right
+                button.button.is-primary.level-item x
+        p.bookmarkCategory= bookmark.category
+        p.bookmarkNotes= bookmark.notes
+        a(href=bookmark.href) Go to Site

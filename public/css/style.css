@@ -1,13 +1,69 @@
 html, body {
 
 
-    background-size: 100%;
+    background-size: fill;
+    background-image: url("../images/test.jpg");
     background-repeat: no-repeat;
     font-family: 'Comfortaa', cursive;
     margin:0;
     padding:0;
     height:100%;
     width:100vw
+
+}
+
+#styleTitle{
+    font-size: 72px;
+  background: -webkit-linear-gradient(#00956f, #007b8f);
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#styleTitle2{
+    font-size: 40px;
+  background: -webkit-linear-gradient(#00956f, #007b8f);
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar{
+    background-color: transparent;
+}
+
+.btn-hover {
+    width: 125px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #949494a8;
+    cursor: pointer;
+    margin: 5px;
+    height: 35px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-1 {
+    background-image: linear-gradient(to right, 
+    #0b0b0d, #0b0b0d, #00956f, #007b8f);
 
 }
 
@@ -31,13 +87,16 @@ h3 {
     font-size: 1.5em;
 }
 
+h5 {
+    font-size: 1.2em;
+}
+
 hr {
     margin-top: 10px;
 }
 
-#bookmarkBox {
+.bookmarkBox {
     height: 200px;
-    width: 300px;
     background: #f4f4f4;
 }
 
@@ -53,10 +112,18 @@ hr {
     width: 500px;
     margin-left: 155px;
 }
+#mainLogo{
+    width: 7000px;
+
+}
 
 #navLogo{
    transform: scale(2);
    transform-origin: left;
+<<<<<<< HEAD
+=======
+   margin-bottom: 17px;
+>>>>>>> f40f863229a2d8d47d305280535b74c294f90ba5
 
 }
 

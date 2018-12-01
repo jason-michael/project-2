@@ -1,7 +1,10 @@
 $("#showModal").click((function(){
     $(".modal").addClass("is-active");
 }));
+<<<<<<< HEAD
+=======
 
+>>>>>>> f40f863229a2d8d47d305280535b74c294f90ba5
 
     function toggleCollectionModal () {
         console.log("You clicked!");
@@ -24,7 +27,6 @@ $("#showModal").click((function(){
 $(document).ready(function(){
     $("#addNewCollection").on("click", function(){
         toggleCollectionModal();
-        console.log("You clicked!");
     });
 
     $("#closeBox").on("click", function(){
@@ -39,4 +41,33 @@ $(document).ready(function(){
         toggleBookmarkModal();
     });
 
+    $("addBookmarkBtn").on("submit", function(event) {
+        
+        event.preventDefault();
+    
+        var newBookmark = {
+          bookmark_name: $("#addBookmarkName").val().trim(),
+          href: $("#addBookmarkLink").val().trim(),
+          notes: $("#addBookmarkNotes").val().trim(),
+          collection_name: $("#addBookmarkCollection").val().trim(),
+          category: $("#addBookmarkCategory").val()
+        };
+    
+      
+        $.ajax("/bookmarks/:bkmk_id", {
+          type: "POST",
+          data: newBookmark
+        }).then(
+          function() {
+            console.log("YAY! created new bookmark");
+            
+            location.reload();
+          }
+        );
+      });
+
 });
+
+
+
+

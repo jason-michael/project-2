@@ -9,7 +9,7 @@ const hashSize = 10;
 const apiRoutes = require('./apiRoutes');
 const Bookmark = require('../model/bookmark');
 
-const collection = require('./collection');
+const apiRoutes = require('./bookmarkController');
 
 //============================
 // ROUTES
@@ -42,6 +42,7 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
 
         // Render
         res.render('profile', {
+            title: 'Profile',
             collections,
             bookmarks: data,
             user: req.user.user_id

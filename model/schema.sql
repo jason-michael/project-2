@@ -19,12 +19,12 @@ CREATE TABLE users
 -- Bookmarks Table
 CREATE TABLE bookmarks (
     bkmk_id INT(11) NOT NULL AUTO_INCREMENT,
-    createdAt TIMESTAMP NOT NULL,
-    bookmark_name VARCHAR(50) NULL,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    bookmark_name VARCHAR(50) NOT NULL,
     href VARCHAR(750) NOT NULL,
     notes VARCHAR(2000) NULL,
     collection_name VARCHAR(500) NOT NULL,
-    category VARCHAR(100) NULL,
+    category VARCHAR(100) NOT NULL,
     PRIMARY KEY (bkmk_id),
     user_id INT(11) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
