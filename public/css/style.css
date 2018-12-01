@@ -87,13 +87,16 @@ h3 {
     font-size: 1.5em;
 }
 
+h5 {
+    font-size: 1.2em;
+}
+
 hr {
     margin-top: 10px;
 }
 
-#bookmarkBox {
+.bookmarkBox {
     height: 200px;
-    width: 300px;
     background: #f4f4f4;
 }
 
@@ -117,7 +120,10 @@ hr {
 #navLogo{
    transform: scale(2);
    transform-origin: left;
+<<<<<<< HEAD
+=======
    margin-bottom: 17px;
+>>>>>>> f40f863229a2d8d47d305280535b74c294f90ba5
 
 }
 
