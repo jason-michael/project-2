@@ -6,9 +6,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const db = require('../config/db_connection');
 const hashSize = 10;
-const apiRoutes = require('./apiRoutes');
 const Bookmark = require('../model/bookmark');
-
 const apiRoutes = require('./bookmarkController');
 
 //============================
