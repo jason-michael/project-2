@@ -1,8 +1,12 @@
+//=============================================================
+// Show Modal
+//=============================================================
 $("#showModal").click((function(){
     $(".modal").addClass("is-active");
 }));
-
-
+//=============================================================
+// Toggle Collection Modal
+//=============================================================
     function toggleCollectionModal () {
         console.log("You clicked!");
         if (collectionModal.classList.contains('is-active')) {
@@ -11,7 +15,9 @@ $("#showModal").click((function(){
             collectionModal.classList.add('is-active');	
         }
     }
-
+//=============================================================
+// Toggle Bookmark Modal
+//=============================================================
     function toggleBookmarkModal () {
         console.log("You clicked!");
         if (bookmarkModal.classList.contains('is-active')) {
@@ -20,7 +26,9 @@ $("#showModal").click((function(){
             bookmarkModal.classList.add('is-active');	
         }
     }
-
+//=============================================================
+// User Action List
+//=============================================================
 $(document).ready(function(){
     $("#addNewCollection").on("click", function(){
         toggleCollectionModal();
@@ -38,7 +46,7 @@ $(document).ready(function(){
         toggleBookmarkModal();
     });
 
-    $("addBookmarkBtn").on("submit", function(event) {
+    $("#submitBookmarkBtn").on("click", function(event) {
         
         event.preventDefault();
     
@@ -47,7 +55,7 @@ $(document).ready(function(){
           href: $("#addBookmarkLink").val().trim(),
           notes: $("#addBookmarkNotes").val().trim(),
           collection_name: $("#addBookmarkCollection").val().trim(),
-          category: $("#addBookmarkCategory").val()
+          category: $("#addBookmarkCategory").val().trim()
         };
     
       
@@ -58,7 +66,6 @@ $(document).ready(function(){
           function() {
             console.log("YAY! created new bookmark");
             
-            location.reload();
           }
         );
       });
