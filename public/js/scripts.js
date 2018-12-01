@@ -2,6 +2,7 @@ $("#showModal").click((function(){
     $(".modal").addClass("is-active");
 }));
 
+
     function toggleCollectionModal () {
         console.log("You clicked!");
         if (collectionModal.classList.contains('is-active')) {
