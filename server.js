@@ -33,6 +33,9 @@ app.use(expressValidator());
 //============================
 app.use(loginRoutes);
 
+// Redirect to root on bad route.
+app.get('*', (req,res) => res.redirect('/'));
+
 //============================
 // SERVER START
 //============================

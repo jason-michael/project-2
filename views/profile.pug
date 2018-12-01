@@ -8,10 +8,11 @@ br
             aside.menu
                 .level
                     .level-left
-                        p.menu-label.level-item Collections 
+                        p.menu-label.level-item Collections
                     .level-right
                         button.button.is-block.is-primary.level-item#addNewCollection +
                 hr
+
                 .modal#collectionModal
                     .modal-background
                     .modal-content
@@ -58,23 +59,30 @@ br
                                 .field
                                     .control
                                         label.label(for="addBookmarkName") Bookmark Name
-                                        input.input(type="text" name="addBookmarkName" placeholder="")
+                                        input.input(type="text" name="addBookmarkName" id="addBookmarkName" placeholder="")
                                 .field
                                     .control
                                         label.label(for="addBookmarkLink") Link
-                                        input.input(type="text" name="addBookmarkLink" placeholder="")
-                                .field
-                                    .control
-                                        lable.label(for="categoryDrop") Category
-                                        .select
-                                            select(name="categoryDrop")
-                                                option Documentation
-                                                option Tutorials
-                                                option Other
+                                        input.input(type="text" name="addBookmarkLink" id="addBookmarkLink" placeholder="")
+                                .columns
+                                    .column.is-two-thirds
+                                        .field
+                                            .control
+                                                label.label(for="addBookmarkCollection") Collection Name
+                                                input.input(type="text" name="addBookmarkCollection" id="addBookmarkCollection" placeholder="")
+                                    .column.is-one-third
+                                        .field
+                                            .control
+                                                lable.label(for="categoryDrop") Category
+                                                .select
+                                                    select(name="categoryDrop" id="addBookmarkCategory")
+                                                        option(value="Documentation") Documentation
+                                                        option(value="Tutorials") Tutorials
+                                                        option(value="Other") Other
                                 .field
                                     .control
                                         label.label(for="addNotes") Notes
-                                        textarea.textarea(type="textarea" name="addNotes" placeholder="")
+                                        textarea.textarea(type="textarea" name="addNotes" id="addBookmarkNotes" placeholder="")
                                 .field
                                     .control
                                         button.button.is-primary(type="submit" id="addBookmarkBtn") Submit
@@ -82,13 +90,8 @@ br
 
                 h3.collectionSubtitle Documentation
                 hr
-                .box#bookmarkBox
-                    .level
-                        .level-left
-                            h3.bookmarkTitle.level-item Example
-                        .level-right
-                            button.button.is-primary.level-item x
-                    .p.bookmarkNotes Pulled from database information. Notes Notes Notes
-                    a(href="#") Go to Site
+                .columns.is-multiline.is-mobile
+                    for bookmark in bookmarks
+                        include includes/bookmark.pug
 
 

@@ -3,7 +3,7 @@ const connection = require("./db_connection")
 
 const bookmk_orm = {
     selectAll: function(user, callback) {
-        let query = "SELECT * FROM bookmarks WHERE user_name = ?";
+        let query = "SELECT * FROM bookmarks WHERE user_id = ?";
         connection.query(query, [user], (err, result) => {
             if (err) throw err
             callback(result)
