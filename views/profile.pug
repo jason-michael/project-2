@@ -1,6 +1,6 @@
 include includes/header.pug
 
-h1.title.block.has-text-centered Profile page
+h1#styleTitle.title.is-1.block.has-text-centered My Dashboard
 br
 .container(style="width:90%;margin-top:20px;")
     .columns.is-8
@@ -10,7 +10,7 @@ br
                     .level-left
                         p.menu-label.level-item Collections
                     .level-right
-                        button.button.is-block.is-primary.level-item#addNewCollection +
+                        button.button.is-block.is-black.level-item#addNewCollection +
                 hr
 
                 .modal#collectionModal
@@ -24,7 +24,7 @@ br
                                     input.input(type="text" name="addCollectionName" placeholder="")
                             .field
                                 .control
-                                    button.button.is-primary(type="submit" id="addCollectionBtn") Submit
+                                    button.button.is-black(type="submit" id="addCollectionBtn") Submit
                     button.modal-close.is-large(aria-label="close")
 
                 ul.menu-list#allCollections
@@ -45,7 +45,7 @@ br
                     .level-left
                         h1.collectionTitle.level-item Example Collection
                     .level-right
-                        button.button.is-block.is-primary.level-item(href="") +
+                        button.button.is-block.is-black.level-item(href="") +
 
                 h3.collectionSubtitle Documentation
                 hr

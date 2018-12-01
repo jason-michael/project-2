@@ -12,6 +12,21 @@ html, body {
 
 }
 
+#styleTitle{
+    font-size: 72px;
+  background: -webkit-linear-gradient(#00956f, #007b8f);
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#styleTitle2{
+    font-size: 40px;
+  background: -webkit-linear-gradient(#00956f, #007b8f);
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .navbar{
     background-color: transparent;
 }
@@ -20,7 +35,7 @@ html, body {
     width: 125px;
     font-size: 16px;
     font-weight: 600;
-    color: #cccccca8;
+    color: #949494a8;
     cursor: pointer;
     margin: 5px;
     height: 35px;
@@ -90,10 +105,15 @@ h3 {
     width: 500px;
     margin-left: 155px;
 }
+#mainLogo{
+    width: 7000px;
+
+}
 
 #navLogo{
    transform: scale(2);
    transform-origin: left;
+   margin-bottom: 17px;
 
 }
 
