@@ -13,20 +13,29 @@ html, body {
 
 }
 
-#styleTitle{
-    font-size: 72px;
-  background: -webkit-linear-gradient(#00956f, #007b8f);
-  
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+body.container {
+    margin: 50px auto;
+    width: 25%;
 }
-#styleTitle2{
-    font-size: 40px;
-  background: -webkit-linear-gradient(#00956f, #007b8f);
-  
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+
+h1 {
+    font-size: 2em;
 }
+
+h3 {
+    font-size: 1.5em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+hr {
+    margin-top: 10px;
+    border: #A9A9A9 1px solid;
+}
+
+
 
 .navbar{
     background-color: transparent;
@@ -36,7 +45,7 @@ html, body {
     width: 125px;
     font-size: 16px;
     font-weight: 600;
-    color: #f7f7f7a8;
+    color: #f7f7f7;
     cursor: pointer;
     margin: 5px;
     height: 35px;
@@ -68,37 +77,47 @@ html, body {
 
 }
 
+.menu-list a {
+    color: #E8E8E8;
+}
 
+.menu-list a:hover {
+    color: #E8E8E8;
+    background: #00d1b2;
+}
 
 .formContainer{
     max-width: 25%;
-    text-align: center
-}
-
-body.container {
-    margin: 50px auto;
-    width: 25%;
-}
-
-h1 {
-    font-size: 2em;
-}
-
-h3 {
-    font-size: 1.5em;
-}
-
-h5 {
-    font-size: 1.2em;
-}
-
-hr {
-    margin-top: 10px;
+    text-align: center;
 }
 
 .bookmarkBox {
     height: 200px;
-    background: #f4f4f4;
+    background: #2F2F30;
+    color: #E8E8E8;
+    padding: 10px;
+}
+
+.bookmarkCategory{
+    text-transform: uppercase;
+    color: #484848;
+    text-align: center;
+    vertical-align: text-bottom;
+    bottom: 0;
+    left: 0;
+    padding-top: 10px;
+}
+
+.bookmarkWebsiteLink {
+    text-align: center;
+}
+
+.fa-trash {
+    color: #00d1b2;;
+}
+
+.fa-trash:hover{
+    color:#E8E8E8;
 }
 
 ::-webkit-scrollbar {
@@ -109,13 +128,54 @@ hr {
     text-align: center
 }
 
+.bookmarkNotes {
+    font-size: 0.75em;
+}
+
+.collectionTitle {
+    color: #00d1b2;
+}
+
+.menu-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+#deleteBtn {
+    height: 80%;
+    width: 80%;
+    background: #2F2F30;
+}
+
+#deleteBtn:hover {
+    background: #00d1b2;
+}
+
+#styleTitle{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 72px;
+    background: -webkit-linear-gradient(#00956f, #007b8f);
+  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#styleTitle2{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
+    background: -webkit-linear-gradient(#00956f, #007b8f);
+  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 #logo{
     width: 500px;
     margin-left: 155px;
 }
 #mainLogo{
     width: 7000px;
-
 }
 
 #navLogo{
@@ -125,8 +185,8 @@ hr {
 
 }
 
-.menu-label {
-    font-size: 1em;
+#updatedCollectionTitle {
+    font-family: 'Orbitron', sans-serif;
 }
 
 .footer{
@@ -136,8 +196,7 @@ hr {
         width:100%;
         height:30px;
         min-height: 40hv;
-        background-color: transparent
-
+        background-color: transparent;
 
 }
 
@@ -146,3 +205,4 @@ hr {
     max-width: 400px;
     padding: 0 14px;
 }
+

@@ -3,17 +3,14 @@ include includes/header.pug
 h1#styleTitle.title.is-1.block.has-text-centered My Dashboard
 br
 .container(style="width:90%;margin-top:20px;")
-    .columns.is-8
+    .columns.column-gap
         .column.is-one-quarter
             aside.menu
                 .level
                     .level-left
                         p.menu-label.level-item Collections
-                    .level-right
-                        button.button.is-block.is-black.level-item#addNewCollection +
                 hr
-
-                .modal#collectionModal
+                //-.modal#collectionModal
                     .modal-background
                     .modal-content
                         h3 Create a New Collection
@@ -28,7 +25,7 @@ br
                     button.modal-close.is-large(aria-label="close" id="closeBox")
 
                 ul.menu-list#allCollections
-                    li
+                    //-li
                         a.collectionTitle Example Collection
 
                         ul.menu-list.collectionSubtitle
@@ -40,7 +37,7 @@ br
                                 a(href="#") Other
                     each value, index in collections
                         li
-                            a.collectionTitle= index
+                            p.collectionTitle= index
                             ul.menu-list.collectionSubtitle
                                 a(href= `/bookmarks/${user}/${index}/Documentation`) Documentation
                                 a(href= `/bookmarks/${user}/${index}/Tutorials`) Tutorials
@@ -51,7 +48,7 @@ br
             #bookmarkDisplay
                 .level
                     .level-left
-                        h1.collectionTitle.level-item Example Collection
+                        h1.level-item#updatedCollectionTitle Bookmarks
                     .level-right
                         button.button.is-block.is-primary.level-item#addBookmarkBtn +
 

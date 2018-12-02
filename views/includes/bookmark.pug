@@ -4,7 +4,9 @@
             .level-left
                 h5.bookmarkTitle= bookmark.bookmark_name
             .level-right
-                button.button.is-primary.level-item(onclick=`deleteBookmark(${bookmark.bkmk_id})`) x
-        p.bookmarkCategory= bookmark.category
+                button.button.is-primary.level-item#deleteBtn(onclick=`deleteBookmark(${bookmark.bkmk_id})`)
+                    i(class="fas fa-trash fa-sm")
         p.bookmarkNotes= bookmark.notes
-        a(href=bookmark.href) Go to Site
+        .span(style="text-align:center;")
+            a.bookmarkWebsiteLink(href=bookmark.href) Go to Site
+        p.bookmarkCategory= bookmark.category

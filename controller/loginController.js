@@ -17,7 +17,7 @@ const apiRoutes = require('./bookmarkController');
  * Home
  */
 router.get('/', (req, res) => {
-    res.render('home', {
+    res.render('about', {
         title: 'Home'
     });
 });
@@ -45,15 +45,6 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
             bookmarks: data,
             user: req.user.user_id
         });
-    });
-});
-
-/**
- * About GET
- */
-router.get('/about', authenticationMiddleware(), (req, res) => {
-    res.render('about', {
-        title: 'About'
     });
 });
 
