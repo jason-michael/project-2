@@ -31,9 +31,11 @@ CREATE TABLE bookmarks (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+INSERT INTO users (username, email, password)
+VALUES ("mattyb", "matt@test.com", "12345678");
 
 INSERT INTO bookmarks (bookmark_name, href, notes, collection_name, category, user_id)
-VALUES ("Semantic HTML", "w3schools.com", "HTML5 semantic tags ref.", "HTML", "Documentation", 1);
+VALUES ("Semantic HTML", "https://www.w3schools.com/", "HTML5 semantic tags ref.", "HTML", "Documentation", 1);
 
 INSERT INTO bookmarks (bookmark_name, href, notes, collection_name, category, user_id)
-VALUES ("Pug/Jade HTML", "w3schools.com", "HTML template", "HTML", "Documentation", 1);
+VALUES ("Pug/Jade HTML", "https://www.w3schools.com/", "HTML template", "HTML", "Documentation", 1);

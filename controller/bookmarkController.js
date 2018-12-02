@@ -38,7 +38,7 @@ router.put("/bookmarks/:bkmk_id", (req, res) => {
 router.delete("/bookmarks/:bkmk_id", (req, res) => {
     let id = req.params.bkmk_id;
     Bookmarks.delete(id, data => {
-        res.send("Bookmark successfully deleted.")
+        res.end()
     })
 })
 //==========================================================

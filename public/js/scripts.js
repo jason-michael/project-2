@@ -46,10 +46,11 @@ $(document).ready(function(){
         toggleBookmarkModal();
     });
 
-    $("#submitBookmarkBtn").on("click", function(event) {
+    //=============================================================
+    // POST New Bookmark
+    //=============================================================
+    $("#submitBookmarkBtn").on("click", function() {
         
-        event.preventDefault();
-    
         var newBookmark = {
           bookmark_name: $("#addBookmarkName").val().trim(),
           href: $("#addBookmarkLink").val().trim(),
@@ -65,13 +66,25 @@ $(document).ready(function(){
         }).then(
           function() {
             console.log("YAY! created new bookmark");
-            
-          }
-        );
+          });
+
+        $("#addBookmarkForm").trigger("reset")
       });
 
 });
 
+//=============================================================
+// DELETE Bookmark
+//=============================================================
+function deleteBookmark(id) {
+    $.ajax(`/bookmarks/${id}`, {
+        type: "DELETE",
+    })
+    .then(() => {
+        console.log("Bookmark deleted.");
+        location.reload()
+    })
+}
 
 
 
