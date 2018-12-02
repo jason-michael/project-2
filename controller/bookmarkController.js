@@ -16,8 +16,9 @@ router.get("/users/:id/bookmarks", (req, res) => {
 //==========================================================
 router.post("/bookmarks/:bkmk_id", (req, res) => {
     let obj = req.body;
-    let id = req.params.bkmk_id;
-    Bookmarks.create(obj, id, data => {
+    let user = req.user.user_id;
+    obj.user_id = user
+    Bookmarks.create(obj, data => {
         res.json(data)
     })
 })
@@ -37,10 +38,12 @@ router.put("/bookmarks/:bkmk_id", (req, res) => {
 router.delete("/bookmarks/:bkmk_id", (req, res) => {
     let id = req.params.bkmk_id;
     Bookmarks.delete(id, data => {
-        res.send("Bookmark successfully deleted.")
+        res.end()
     })
 })
-
+//==========================================================
+// Initial Login
+//==========================================================
 router.get('/bookmarks/:user/:collection/:category', (req, res) => {
     const user = req.params.user;
     const collection = req.params.collection;

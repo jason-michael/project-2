@@ -1,8 +1,12 @@
+//=============================================================
+// Show Modal
+//=============================================================
 $("#showModal").click((function(){
     $(".modal").addClass("is-active");
 }));
-
-
+//=============================================================
+// Toggle Collection Modal
+//=============================================================
     function toggleCollectionModal () {
         console.log("You clicked!");
         if (collectionModal.classList.contains('is-active')) {
@@ -11,7 +15,9 @@ $("#showModal").click((function(){
             collectionModal.classList.add('is-active');	
         }
     }
-
+//=============================================================
+// Toggle Bookmark Modal
+//=============================================================
     function toggleBookmarkModal () {
         console.log("You clicked!");
         if (bookmarkModal.classList.contains('is-active')) {
@@ -20,7 +26,9 @@ $("#showModal").click((function(){
             bookmarkModal.classList.add('is-active');	
         }
     }
-
+//=============================================================
+// User Action List
+//=============================================================
 $(document).ready(function(){
     $("#addNewCollection").on("click", function(){
         toggleCollectionModal();
@@ -38,16 +46,17 @@ $(document).ready(function(){
         toggleBookmarkModal();
     });
 
-    $("#addBookmarkBtn").on("click", function(event) {
+    //=============================================================
+    // POST New Bookmark
+    //=============================================================
+    $("#submitBookmarkBtn").on("click", function() {
         
-        event.preventDefault();
-    
         var newBookmark = {
           bookmark_name: $("#addBookmarkName").val().trim(),
           href: $("#addBookmarkLink").val().trim(),
           notes: $("#addBookmarkNotes").val().trim(),
           collection_name: $("#addBookmarkCollection").val().trim(),
-          category: $("#addBookmarkCategory").val()
+          category: $("#addBookmarkCategory").val().trim()
         };
     
       
@@ -57,13 +66,25 @@ $(document).ready(function(){
         }).then(
           function() {
             console.log("YAY! created new bookmark");
-            
-          }
-        );
+          });
+
+        $("#addBookmarkForm").trigger("reset")
       });
 
 });
 
+//=============================================================
+// DELETE Bookmark
+//=============================================================
+function deleteBookmark(id) {
+    $.ajax(`/bookmarks/${id}`, {
+        type: "DELETE",
+    })
+    .then(() => {
+        console.log("Bookmark deleted.");
+        location.reload()
+    })
+}
 
 
 

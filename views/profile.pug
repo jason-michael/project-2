@@ -17,7 +17,7 @@ br
                     .modal-background
                     .modal-content
                         h3 Create a New Collection
-                        form(method="POST" action="")
+                        form
                             .field
                                 .control
                                     label.label(for="addCollectionName") Collection Name
@@ -61,7 +61,7 @@ br
                         .box
                             h3 Create a New Bookmark
                             hr
-                            form
+                            form#addBookmarkForm
                                 .field
                                     .control
                                         label.label(for="addBookmarkName") Bookmark Name
@@ -91,7 +91,7 @@ br
                                         textarea.textarea(type="textarea" name="addNotes" id="addBookmarkNotes" placeholder="")
                                 .field
                                     .control
-                                        button.button.is-primary(type="submit" id="addBookmarkBtn") Submit
+                                        button.button.is-primary(type="submit" id="submitBookmarkBtn") Submit
                         button.modal-close.is-large#bookmarkClose(aria-label="close")
 
                 h3.collectionSubtitle Documentation
@@ -99,5 +99,3 @@ br
                 .columns.is-multiline.is-mobile
                     for bookmark in bookmarks
                         include includes/bookmark.pug
-
-
