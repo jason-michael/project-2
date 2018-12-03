@@ -112,14 +112,6 @@ hr {
     text-align: center;
 }
 
-.fa-trash {
-    color: #00d1b2;;
-}
-
-.fa-trash:hover{
-    color:#E8E8E8;
-}
-
 ::-webkit-scrollbar {
     display: none;
 }
@@ -153,6 +145,14 @@ hr {
     background: #00d1b2;
 }
 
+.fa-trash {
+    color: #00d1b2;;
+}
+
+.fa-trash:hover{
+    color:#E8E8E8;
+}
+
 #styleTitle{
     font-family: 'Orbitron', sans-serif;
     font-size: 72px;
@@ -181,8 +181,13 @@ hr {
 #navLogo{
    transform: scale(2);
    transform-origin: left;
-   margin-bottom: 17px; 
+   margin-bottom: 17px;
+   margin-right: 17px; 
 
+}
+
+#notesDiv {
+    height:80px;
 }
 
 #updatedCollectionTitle {
