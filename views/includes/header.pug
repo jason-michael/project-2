@@ -23,7 +23,7 @@ html(lang="en")
 
     //- Local JS
     script(src="/js/scripts.js", type="text/javascript")
-    
+
 
     body
         nav.navbar(role="navigation" aria-label="main navigation")
@@ -40,14 +40,16 @@ html(lang="en")
                 .navbar-start
                     a.button(class="btn-hover color-1" href="/profile") My Dashboard
                     a.button(class="btn-hover color-1" href="/about") About
-                    
-            
+
+
 
                 .navbar-end
                     .navbar-item
                         .buttons
-                        a.button(class="btn-hover color-1" href="/login") Log In
-                        a.button(class="btn-hover color-1" href="./logout") Log Out
+                        if isAuthenticated
+                            a.button(class="btn-hover color-1" href="./logout") Log Out
+                        else
+                            a.button(class="btn-hover color-1" href="/login") Log In
 
         .container
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
