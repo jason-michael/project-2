@@ -44,7 +44,8 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
             collections,
             bookmarks: data,
             user: req.user.user_id,
-            collectionHeading: 'Bookmarks'
+            collectionHeading: 'Bookmarks',
+            isAuthenticated: req.isAuthenticated()
         });
     });
 });
