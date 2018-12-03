@@ -67,7 +67,9 @@ router.get('/bookmarks/:user/:collection/:category', (req, res) => {
             res.render('profile', {
                 collections,
                 bookmarks: results,
-                user: req.user.user_id
+                user: req.user.user_id,
+                category: category,
+                collectionHeading: 'Bookmarks - ' + collection
             });
         });
     });

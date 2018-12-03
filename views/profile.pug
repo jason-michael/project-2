@@ -9,7 +9,6 @@ br
                 .level
                     .level-left
                         p.menu-label.level-item Collections
-                hr
                 //-.modal#collectionModal
                     .modal-background
                     .modal-content
@@ -48,7 +47,7 @@ br
             #bookmarkDisplay
                 .level
                     .level-left
-                        h1.level-item#updatedCollectionTitle Bookmarks
+                        h1.level-item#updatedCollectionTitle=collectionHeading
                     .level-right
                         button.button.is-block.is-primary.level-item#addBookmarkBtn +
 
@@ -91,7 +90,7 @@ br
                                         button.button.is-primary(type="submit" id="submitBookmarkBtn") Submit
                         button.modal-close.is-large#bookmarkClose(aria-label="close")
 
-                h3.collectionSubtitle Documentation
+                h3.collectionSubtitle=category
                 hr
                 .columns.is-multiline.is-mobile
                     for bookmark in bookmarks

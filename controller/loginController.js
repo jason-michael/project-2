@@ -43,7 +43,8 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
             title: 'Profile',
             collections,
             bookmarks: data,
-            user: req.user.user_id
+            user: req.user.user_id,
+            collectionHeading: 'Bookmarks'
         });
     });
 });
