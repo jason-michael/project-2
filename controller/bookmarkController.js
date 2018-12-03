@@ -17,10 +17,10 @@ router.get("/users/:id/bookmarks", (req, res) => {
 router.post("/bookmarks/:bkmk_id", (req, res) => {
     let obj = req.body;
     let user = req.user.user_id;
-    obj.user_id = user
+    obj.user_id = user;
     Bookmarks.create(obj, data => {
         res.json(data)
-    })
+    });
 })
 //==========================================================
 // UPDATE Bookmark
