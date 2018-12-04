@@ -16,9 +16,15 @@ const bookmk_orm = {
             callback(result)
         })
     },
+<<<<<<< HEAD
+    insertOne: function (table, obj, bkmk_id, callback) {
+        let query = "INSERT INTO ?? SET ? WHERE bkmk_id = ?";
+        connection.query(query, [table, obj, bkmk_id], (err, result) => {
+=======
     insertOne: function (table, obj, callback) {
         let query = "INSERT INTO ?? SET ?";
         connection.query(query, [table, obj], (err, result) => {
+>>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e
             if (err) throw err
             callback(result)
         })

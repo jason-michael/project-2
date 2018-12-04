@@ -35,6 +35,25 @@ br
                                 a(href= `/bookmarks/${user}/${index}/Other`) Other
 
 
+<<<<<<< HEAD
+                        ul.menu-list.collectionSubtitle
+                            li
+                                a(href="#") Documentation
+                            li
+                                a(href="#") Tutorials
+                            li
+                                a(href="#") Other
+                    each value, index in collections
+                        li
+                            a.collectionTitle= index
+                            ul.menu-list.collectionSubtitle
+                                a(href= `/bookmarks/${user}/${index}/Documentation`) Documentation
+                                a(href= `/bookmarks/${user}/${index}/Tutorials`) Tutorials
+                                a(href= `/bookmarks/${user}/${index}/Other`) Other
+
+
+=======
+>>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e
         .column.is-three-quarters
             #bookmarkDisplay
                 .level
