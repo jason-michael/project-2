@@ -26,7 +26,10 @@ router.get('/', (req, res) => {
  * Profile
  */
 router.get('/profile', authenticationMiddleware(), (req, res) => {
-    Bookmark.getAll(req.user.user_id, data => {
+
+    // IMPORTANT: Prevent user_id going in as NULL
+    let user = (typeof req.user !== 'object') ? req.user : req.user.user_id;
+    Bookmark.getAll(user, data => {
 
         // Sort bookmarks
         let collections = {};
@@ -87,8 +90,6 @@ router.get('/register', (req, res, next) => res.render('register', {
  */
 router.post('/register', (req, res, next) => {
 
-    // TODO: refactor
-
     //============================
     // VALIDATORS
     //============================
@@ -98,13 +99,6 @@ router.post('/register', (req, res, next) => {
     req.checkBody('email', 'Email address must be between 4-100 characters long, please try again.').len(4, 100);
     req.checkBody('password', 'Password must be between 8-100 characters long.').len(8, 100);
     req.checkBody('passwordMatch', 'Passwords do not match, please try again.').equals(req.body.password);
-    //------------------------------------------------------------------
-    // Strict password character validation (disabled for development)
-    //------------------------------------------------------------------
-    // req.checkBody("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.")
-    // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
-
-
 
     //============================
     // VALIDATION
@@ -131,9 +125,7 @@ router.post('/register', (req, res, next) => {
 
             newUser.password = hash;
 
-            //============================
-            // REGISTER
-            //============================
+            // Register
             registerNewUser(newUser, (userId) => {
                 req.login(userId, err => {
                     if (err) throw err;
@@ -166,8 +158,6 @@ passport.deserializeUser(function (userId, done) {
 //===============================
 function authenticationMiddleware() {
     return (req, res, next) => {
-        // console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
-
         if (req.isAuthenticated()) return next();
         res.redirect('/login')
     }
@@ -178,7 +168,6 @@ function authenticationMiddleware() {
 //============================
 async function registerNewUser(user, callback) {
     const newUserId = await addNewUser(user)
-    // await setNewUserConfig(newUserId);
     callback(newUserId);
 }
 
