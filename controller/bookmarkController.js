@@ -16,10 +16,14 @@ router.get("/users/:id/bookmarks", (req, res) => {
 //==========================================================
 router.post("/bookmarks/:bkmk_id", (req, res) => {
     let obj = req.body;
-    let user = req.user.user_id;
+
+    // IMPORTANT: Prevent user_id going in as NULL
+    let user = (typeof req.user !== 'object') ? req.user : req.user.user_id;
+
     obj.user_id = user;
     Bookmarks.create(obj, data => {
-        res.json(data)
+        // A redirect is needed here to trigger showing all bookmarks
+        res.redirect('/profile');
     });
 })
 //==========================================================
