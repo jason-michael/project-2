@@ -1,5 +1,7 @@
 include includes/header.pug
-.container(style="width:400px;margin-top:100px;")
+div.logoHeading
+    img#logo(src="/images/logo.svg")
+.container(style="width:400px;")
     h1.title Sign In
 
     form(method="POST" action="/login")
@@ -15,3 +17,8 @@ include includes/header.pug
             .control
                 a.button(class="btn-hover color-1" href='/') Back
                 button.button.is-primary(class="btn-hover color-1" type="submit" style="margin-left:10px;color: #f7f7f7a8;font-family: 'Comfortaa', cursive;") Sign in   
+<<<<<<< HEAD
+=======
+        br
+        a(href="/register") CREATE AN ACCOUNT
+>>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e

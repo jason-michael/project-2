@@ -1,29 +1,34 @@
+//=============================================================
+// Show Modal
+//=============================================================
 $("#showModal").click((function(){
     $(".modal").addClass("is-active");
 }));
-<<<<<<< HEAD
-=======
-
->>>>>>> f40f863229a2d8d47d305280535b74c294f90ba5
-
+//=============================================================
+// Toggle Collection Modal
+//=============================================================
     function toggleCollectionModal () {
         console.log("You clicked!");
         if (collectionModal.classList.contains('is-active')) {
             collectionModal.classList.remove('is-active');
         } else {
-            collectionModal.classList.add('is-active');	
+            collectionModal.classList.add('is-active');
         }
     }
-
+//=============================================================
+// Toggle Bookmark Modal
+//=============================================================
     function toggleBookmarkModal () {
         console.log("You clicked!");
         if (bookmarkModal.classList.contains('is-active')) {
             bookmarkModal.classList.remove('is-active');
         } else {
-            bookmarkModal.classList.add('is-active');	
+            bookmarkModal.classList.add('is-active');
         }
     }
-
+//=============================================================
+// User Action List
+//=============================================================
 $(document).ready(function(){
     $("#addNewCollection").on("click", function(){
         toggleCollectionModal();
@@ -41,33 +46,42 @@ $(document).ready(function(){
         toggleBookmarkModal();
     });
 
-    $("addBookmarkBtn").on("submit", function(event) {
-        
-        event.preventDefault();
-    
+    //=============================================================
+    // POST New Bookmark
+    //=============================================================
+    $("#submitBookmarkBtn").on("click", function() {
+
         var newBookmark = {
           bookmark_name: $("#addBookmarkName").val().trim(),
           href: $("#addBookmarkLink").val().trim(),
           notes: $("#addBookmarkNotes").val().trim(),
           collection_name: $("#addBookmarkCollection").val().trim(),
-          category: $("#addBookmarkCategory").val()
+          category: $("#addBookmarkCategory").val().trim()
         };
-    
-      
+
+
         $.ajax("/bookmarks/:bkmk_id", {
           type: "POST",
           data: newBookmark
         }).then(
           function() {
             console.log("YAY! created new bookmark");
-            
-            location.reload();
-          }
-        );
+          });
+
+        $("#addBookmarkForm").trigger("reset")
       });
 
 });
 
-
-
-
+//=============================================================
+// DELETE Bookmark
+//=============================================================
+function deleteBookmark(id) {
+    $.ajax(`/bookmarks/${id}`, {
+        type: "DELETE",
+    })
+    .then(() => {
+        console.log("Bookmark deleted.");
+        location.reload()
+    })
+}
