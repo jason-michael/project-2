@@ -63,6 +63,7 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
         });
     });
 });
+});
 
 /**
  * Login GET
@@ -170,7 +171,7 @@ passport.deserializeUser(function (userId, done) {
 function authenticationMiddleware() {
     return (req, res, next) => {
         if (req.isAuthenticated()) return next();
-        res.redirect('/login')
+        res.redirect('/login');
     }
 }
 
