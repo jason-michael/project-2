@@ -2,20 +2,25 @@ include includes/header.pug
 div.logoHeading
     img#logo(src="/images/logo.svg")
 .container(style="width:400px;")
-    h1.title Sign In
+    h1.title(style="color: #A9A9A9;") Sign In
 
     form(method="POST" action="/login")
         .field
             .control
-                label.label(for="username") Username
+                label.darkLabel.label(for="username") Username
                 input.input(type="text" name="username" placeholder="Enter a username")
         .field
             .control
-                label.label(for="password") Password
+                label.darkLabel.label(for="password") Password
                 input.input(type="password" name="password" placeholder="Enter a password")
         .field
-            .control
+            .control(style="text-align: center;")
                 a.button(class="btn-hover color-1" href='/') Back
                 button.button.is-primary(class="btn-hover color-1" type="submit" style="margin-left:10px;color: #f7f7f7a8;font-family: 'Comfortaa', cursive;") Sign in   
         br
-        a(href="/register") CREATE AN ACCOUNT
+        .createLink(style="text-align: center;")
+            a(href="/register") CREATE AN ACCOUNT
+    .push
+    footer.footer
+        content.has-text-centered()
+            p Curator 	&#169 2018
