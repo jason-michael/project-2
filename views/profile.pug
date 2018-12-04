@@ -24,16 +24,6 @@ br
                     button.modal-close.is-large(aria-label="close" id="closeBox")
 
                 ul.menu-list#allCollections
-                    //-li
-                        a.collectionTitle Example Collection
-
-                        ul.menu-list.collectionSubtitle
-                            li
-                                a(href="#") Documentation
-                            li
-                                a(href="#") Tutorials
-                            li
-                                a(href="#") Other
                     each value, index in collections
                         li
                             p.collectionTitle= index
@@ -41,7 +31,6 @@ br
                                 a(href= `/bookmarks/${user}/${index}/Documentation`) Documentation
                                 a(href= `/bookmarks/${user}/${index}/Tutorials`) Tutorials
                                 a(href= `/bookmarks/${user}/${index}/Other`) Other
-
 
         .column.is-three-quarters
             #bookmarkDisplay

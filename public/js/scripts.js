@@ -12,7 +12,7 @@ $("#showModal").click((function(){
         if (collectionModal.classList.contains('is-active')) {
             collectionModal.classList.remove('is-active');
         } else {
-            collectionModal.classList.add('is-active');	
+            collectionModal.classList.add('is-active');
         }
     }
 //=============================================================
@@ -23,7 +23,7 @@ $("#showModal").click((function(){
         if (bookmarkModal.classList.contains('is-active')) {
             bookmarkModal.classList.remove('is-active');
         } else {
-            bookmarkModal.classList.add('is-active');	
+            bookmarkModal.classList.add('is-active');
         }
     }
 //=============================================================
@@ -50,7 +50,7 @@ $(document).ready(function(){
     // POST New Bookmark
     //=============================================================
     $("#submitBookmarkBtn").on("click", function() {
-        
+
         var newBookmark = {
           bookmark_name: $("#addBookmarkName").val().trim(),
           href: $("#addBookmarkLink").val().trim(),
@@ -58,8 +58,8 @@ $(document).ready(function(){
           collection_name: $("#addBookmarkCollection").val().trim(),
           category: $("#addBookmarkCategory").val().trim()
         };
-    
-      
+
+
         $.ajax("/bookmarks/:bkmk_id", {
           type: "POST",
           data: newBookmark
@@ -85,6 +85,3 @@ function deleteBookmark(id) {
         location.reload()
     })
 }
-
-
-

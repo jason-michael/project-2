@@ -38,15 +38,46 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
             collections[bookmark.collection_name].push(bookmark);
         });
 
+<<<<<<< HEAD
+=======
+    // IMPORTANT: Prevent user_id going in as NULL
+    let user = (typeof req.user !== 'object') ? req.user : req.user.user_id;
+    Bookmark.getAll(user, data => {
+
+        // Sort bookmarks
+        let collections = {};
+        data.forEach(bookmark => {
+            if (!collections[bookmark.collection_name]) {
+                collections[bookmark.collection_name] = [];
+            }
+
+            collections[bookmark.collection_name].push(bookmark);
+        });
+
+>>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e
         // Render
         res.render('profile', {
             title: 'Profile',
             collections,
             bookmarks: data,
+<<<<<<< HEAD
+            user: req.user.user_id
+        });
+    });
+});
+
+/**
+ * About GET
+ */
+router.get('/about', authenticationMiddleware(), (req, res) => {
+    res.render('about', {
+        title: 'About'
+=======
             user: req.user.user_id,
             collectionHeading: 'Bookmarks',
             isAuthenticated: req.isAuthenticated()
         });
+>>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e
     });
 });
 
@@ -87,8 +118,6 @@ router.get('/register', (req, res, next) => res.render('register', {
  */
 router.post('/register', (req, res, next) => {
 
-    // TODO: refactor
-
     //============================
     // VALIDATORS
     //============================
@@ -98,13 +127,6 @@ router.post('/register', (req, res, next) => {
     req.checkBody('email', 'Email address must be between 4-100 characters long, please try again.').len(4, 100);
     req.checkBody('password', 'Password must be between 8-100 characters long.').len(8, 100);
     req.checkBody('passwordMatch', 'Passwords do not match, please try again.').equals(req.body.password);
-    //------------------------------------------------------------------
-    // Strict password character validation (disabled for development)
-    //------------------------------------------------------------------
-    // req.checkBody("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.")
-    // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
-
-
 
     //============================
     // VALIDATION
@@ -131,9 +153,7 @@ router.post('/register', (req, res, next) => {
 
             newUser.password = hash;
 
-            //============================
-            // REGISTER
-            //============================
+            // Register
             registerNewUser(newUser, (userId) => {
                 req.login(userId, err => {
                     if (err) throw err;
@@ -166,8 +186,6 @@ passport.deserializeUser(function (userId, done) {
 //===============================
 function authenticationMiddleware() {
     return (req, res, next) => {
-        // console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
-
         if (req.isAuthenticated()) return next();
         res.redirect('/login')
     }
@@ -178,7 +196,6 @@ function authenticationMiddleware() {
 //============================
 async function registerNewUser(user, callback) {
     const newUserId = await addNewUser(user)
-    // await setNewUserConfig(newUserId);
     callback(newUserId);
 }
 
