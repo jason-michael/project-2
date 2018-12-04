@@ -57,24 +57,10 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
             title: 'Profile',
             collections,
             bookmarks: data,
-<<<<<<< HEAD
-            user: req.user.user_id
-        });
-    });
-});
-
-/**
- * About GET
- */
-router.get('/about', authenticationMiddleware(), (req, res) => {
-    res.render('about', {
-        title: 'About'
-=======
             user: req.user.user_id,
             collectionHeading: 'Bookmarks',
             isAuthenticated: req.isAuthenticated()
         });
->>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e
     });
 });
 
