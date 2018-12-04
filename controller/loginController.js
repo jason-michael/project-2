@@ -38,8 +38,6 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
             collections[bookmark.collection_name].push(bookmark);
         });
 
-<<<<<<< HEAD
-=======
     // IMPORTANT: Prevent user_id going in as NULL
     let user = (typeof req.user !== 'object') ? req.user : req.user.user_id;
     Bookmark.getAll(user, data => {
@@ -54,31 +52,17 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
             collections[bookmark.collection_name].push(bookmark);
         });
 
->>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e
         // Render
         res.render('profile', {
             title: 'Profile',
             collections,
             bookmarks: data,
-<<<<<<< HEAD
-            user: req.user.user_id
-        });
-    });
-});
-
-/**
- * About GET
- */
-router.get('/about', authenticationMiddleware(), (req, res) => {
-    res.render('about', {
-        title: 'About'
-=======
             user: req.user.user_id,
             collectionHeading: 'Bookmarks',
             isAuthenticated: req.isAuthenticated()
         });
->>>>>>> ae3c57e594139bc10d53034901753baa7df1ef6e
     });
+});
 });
 
 /**
@@ -187,7 +171,7 @@ passport.deserializeUser(function (userId, done) {
 function authenticationMiddleware() {
     return (req, res, next) => {
         if (req.isAuthenticated()) return next();
-        res.redirect('/login')
+        res.redirect('/login');
     }
 }
 
