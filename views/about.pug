@@ -1,35 +1,44 @@
 include includes/header.pug
+.container(id="containerAbout" style="width:90%;margin-top:20px;")
+    br
+    br
+    h1#styleTitle2.title.is-1 Your New Favorite Bookmark Manager   
 
-br
-h1#styleTitle2.title.is-1 Your New Favorite Bookmark Manager.
-hr    
-
-section.hero.is-primary-medium
+    section.hero.is-primary-medium
         div.hero-body
-            h1.title.is-1 Curator
-            h2.subtitle.is-2 Your Favorite Bookmark Manager
-            h4 Information is king, if it isn't disorganized.  With Curator, we can establish, catagorize, and organize your saved bookmarks into a proficient dashboard.  We five have created this custom application for your liking.  
-            //Something about something here like 1 paragraph
-br
-
-    
-  
-//-IMAGE CONTAINER
-div(class="columns")
+            h1.title.is-1(style="color: #00d1b2;") Curator
+            h3 Information is king, if it isn't disorganized.  
+            h4 With Curator, we can establish, catagorize, and organize your saved bookmarks into a proficient dashboard.  
+            br
+            br
+            hr
+            h1 About Us
+            h4 We five have created this custom application for your liking.
+    //-IMAGE CONTAINER
+    div(class="columns")
+        .column
         div(class="column")
-            a(href="https://placeholder.com")
-            img( style="border-radius: 50%;" src="https://via.placeholder.com/125")
+            a(href="https://github.com/Jbeaman7")
+                img(class="ourPhoto" style="border-radius: 50%;" src="/images/jordan.jpg")
+            h4.ourName Jordan Beaman
         div(class="column")
-            img( style="border-radius: 50%;" src="https://via.placeholder.com/125")
+            a(href="https://mathewbishop.com/")
+                img(class="ourPhoto" style="border-radius: 50%;" src="/images/matt.jpg")
+            h4.ourName Mathew Bishop
         div(class="column")
-            img( style="border-radius: 50%;" src="https://via.placeholder.com/125")
+            a(href="https://calliehart.github.io/")
+                img(class="ourPhoto" style="border-radius: 50%;" src="/images/callie.jpg")
+            h4.ourName Callie Hart
         div(class="column")
-            img( style="border-radius: 50%;" src="https://via.placeholder.com/125")
+            a(href="https://jason-michael.github.io/index.html")
+                img(class="ourPhoto" style="border-radius: 50%;" src="/images/jason.jpg")
+            h4.ourName Jason Michael
         div(class="column")
-            img( style="border-radius: 50%;" src="https://via.placeholder.com/125")
-        div(class="column")
-    
-      
-footer.footer
-    content.has-text-centered()
-        p Curator 
+            a(href="https://github.com/jkshoem")
+                img(class="ourPhoto" style="border-radius: 50%;" src="/images/jay.jpg")
+            h4.ourName Jay Shoemate
+        .column
+    .push  
+    footer.footer
+        content.has-text-centered()
+            p Curator 	&#169 2018
