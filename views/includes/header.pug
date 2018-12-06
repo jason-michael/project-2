@@ -32,9 +32,9 @@ html(lang="en")
                     img#navLogo(src="/images/logo.svg")
 
                 a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample")
-                span(aria-hidden="true")
-                span(aria-hidden="true")
-                span(aria-hidden="true")
+                    span(aria-hidden="true")
+                    span(aria-hidden="true") 
+                    span(aria-hidden="true") 
 
             #navbarBasicExample.navbar-menu
                 .navbar-start
@@ -47,7 +47,7 @@ html(lang="en")
                     .navbar-item
                         .buttons
                         if isAuthenticated
-                            a.button(class="btn-hover color-1" href="./logout") Log Out
+                            a.button(class="btn-hover color-1" href="/logout") Log Out
                         else
                             a.button(class="btn-hover color-1" href="/login") Log In
 

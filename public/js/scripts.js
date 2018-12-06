@@ -30,6 +30,21 @@ $("#showModal").click((function(){
 // User Action List
 //=============================================================
 $(document).ready(function(){
+
+    //=============================================================
+    // Toggle Mobile Nav
+    //=============================================================
+    $(".navbar-burger").click(function() {
+    
+        
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+    
+    });
+
+    //=============================================================
+    // Collection and Bookmark Buttons
+    //=============================================================
     $("#addNewCollection").on("click", function(){
         toggleCollectionModal();
     });

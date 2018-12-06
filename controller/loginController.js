@@ -63,6 +63,7 @@ router.get('/profile', authenticationMiddleware(), (req, res) => {
         });
     });
 });
+});
 
 /**
  * Login GET
