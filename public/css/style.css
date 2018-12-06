@@ -1,6 +1,4 @@
 html, body {
-
-
     background-size: fill;
     background-image: url("../images/test.jpg");
     background-repeat: no-repeat;
@@ -10,7 +8,6 @@ html, body {
     padding:0;
     height:100%;
     width:100vw
-
 }
 
 body.container {
@@ -39,6 +36,14 @@ hr {
 
 .navbar{
     background-color: transparent;
+}
+
+.navbar-burger span {
+    color: white;
+}
+
+.navbar-menu.is-active {
+    background-color: #0b0b0d;
 }
 
 .btn-hover {
@@ -221,7 +226,6 @@ hr {
    transform-origin: left;
    margin-bottom: 17px;
    margin-right: 17px; 
-
 }
 
 #notesDiv {
